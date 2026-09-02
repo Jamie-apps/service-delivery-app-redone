@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Service Delivery App
 
-## Getting Started
+A full-stack service delivery platform that connects customers with service providers.
 
-First, run the development server:
+This project is a complete rebuild of the original Service Delivery App, using a modern, simpler, and more maintainable technology stack.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Service Delivery App is designed to allow customers to find and request services from providers, while giving providers tools to manage service requests and complete jobs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The platform will support three primary roles:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Customers** — browse services and submit service requests.
+- **Service Providers** — receive, manage, and complete service requests.
+- **Administrators** — manage users, services, requests, and the overall platform.
 
-## Learn More
+The application is being developed as a single full-stack Next.js application rather than as separate frontend and backend projects.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Customer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Account registration and authentication
+- Customer profile
+- Browse available services
+- Submit service requests
+- Provide request details and location
+- View request status
+- Track active and completed requests
+- Review completed services
 
-## Deploy on Vercel
+### Service Provider
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Provider registration and authentication
+- Provider profile
+- Manage offered services
+- View available service requests
+- Accept or reject requests
+- Manage active jobs
+- Update request status
+- View completed jobs
+- View earnings/history
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Administrator
+
+- Administrative dashboard
+- Manage users
+- Manage service providers
+- Manage services
+- Manage service requests
+- Monitor platform activity
+- Manage reviews and other platform data
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| [Next.js](https://nextjs.org/) | Full-stack web framework |
+| React | User interface |
+| TypeScript | Type-safe development |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling |
+| [shadcn/ui](https://ui.shadcn.com/) | UI components |
+| [Supabase](https://supabase.com/) | Database, authentication and storage |
+| PostgreSQL | Relational database |
+| Zod | Data validation |
+| React Hook Form | Form management |
+| date-fns | Date and time utilities |
+| [Vercel](https://vercel.com/) | Deployment |
+| Git / GitHub | Version control |
+
+## Architecture
+
+The application uses a full-stack Next.js architecture.
+
+```text
+                    ┌─────────────────────┐
+                    │       Client        │
+                    │   React / Next.js   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │      Next.js        │
+                    │ Server Components   │
+                    │ Server Actions      │
+                    │ Route Handlers      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │      Supabase       │
+                    │                     │
+                    │ PostgreSQL          │
+                    │ Authentication      │
+                    │ Storage             │
+                    └─────────────────────┘
