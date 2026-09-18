@@ -36,8 +36,15 @@ export default function SignupPage() {
         const { data, error: signupError } = await supabase.auth.signUp({
             email: result.data.email,
             password: result.data.password,
+            options: {
+                data: {
+                    full_name: result.data.fullName,
+                    phone: result.data.phone
+                },
+            },
         });
         console.log("signup response:", data);
+        console.log("user metadata:", data.user?.user_metadata);
         console.log("signup error:", signupError);
         if (signupError){
             setError(signupError.message);
@@ -59,7 +66,7 @@ export default function SignupPage() {
                 { className: "text-y-2 text-center"},
                 createElement(
                     "h1",
-                    { className: "rext-3x1 font-bold"},
+                    { className: "text-3x1 font-bold"},
                     "Create an account",
                 ),
                 createElement(
