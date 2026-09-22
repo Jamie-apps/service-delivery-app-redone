@@ -53,6 +53,7 @@ export default function SignupPage() {
         }
         console.log("Account created successfully");
         setLoading(false);
+        router.push("/dashboard");
     }
 
     return createElement(
