@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { createService } from "./actions";
+import { useRouter } from "next/navigation";
 
 export default function ServiceForm(){
+    const router = useRouter();
     const form = useForm<ServiceInput>({
         resolver: zodResolver(serviceSchema),
         defaultValues: {
@@ -20,8 +23,13 @@ export default function ServiceForm(){
         },
     });
 
-    function onSubmit(data: ServiceInput){
-        console.log("Service form submitted:", data);
+    async function onSubmit(data: ServiceInput) {
+        const result = await createService(data);
+        if (!result.success) {
+            console.error("Service creation failed:", result.error);
+            return;
+        }
+        router.push("/dashboard/my-services");
     }
 
     return (
